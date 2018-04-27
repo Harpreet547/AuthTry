@@ -49,7 +49,6 @@ class UserController {
         }
         console.log(reqBody.email + ' ' + reqBody.username + ' ' + reqBody.password + ' ' +reqBody.passwordConf);
         this.saveUserToDB(userObj, function(result) {
-            console.log('result: ' + result.msg)
             response(result);
         });
         //return result;
