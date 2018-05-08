@@ -36,7 +36,7 @@ router.post('/logout', function(req, res) {
 router.get('/check', function(req, res) {
     console.log('Session ID: ' + req.session.userId);
     res.send({
-        sessionID: 123//req.session.userId
+        sessionID: req.session.userId
     });
 });
 

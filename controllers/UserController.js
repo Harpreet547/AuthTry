@@ -47,7 +47,7 @@ class UserController {
             password: reqBody.password,
             passwordConf: reqBody.passwordConf
         }
-        console.log(reqBody.email + ' ' + reqBody.username + ' ' + reqBody.password + ' ' +reqBody.passwordConf);
+        console.log(reqBody.email + ' ' + reqBody.username + ' ' + reqBody.password + ' ' + reqBody.passwordConf);
         this.saveUserToDB(userObj, function(result) {
             response(result);
         });

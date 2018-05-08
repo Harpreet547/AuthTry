@@ -42,19 +42,19 @@ UserSchema.statics.authenticate = function(email, password, callback) {
         if(err) {
             console.log('Error: ' + err);
             var error = errorCodes.generalErrors.serverError;
-            callback(error, appConstants.messages.login, false, null);
+            return callback(error, appConstants.messages.login, false, null);
         }else if(!user) {
             var error = errorCodes.authErrors.userNotFound;
-            callback(error, appConstants.messages.login.userNotFound, false, null);
+            return callback(error, appConstants.messages.login.userNotFound, false, null);
         }
         bcrypt.compare(password, user.password, function(err, result) {
             if(result === true) {
                 user.password = undefined;
                 console.log('Password Delete Test: ' + JSON.stringify(user));
-                callback(null, appConstants.messages.login.loginSuccess, true, user);
+                return callback(null, appConstants.messages.login.loginSuccess, true, user);
             }else {
                 var error = errorCodes.authErrors.wrongPassword;
-                callback(error, appConstants.messages.login.wrongPassword, false, null)
+                return callback(error, appConstants.messages.login.wrongPassword, false, null)
             }
         });
     });
